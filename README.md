@@ -8,7 +8,7 @@ breeze ui test automation assessment using Cypress
 ```
 ## Installation
  ```
-* git clone project : https://github.com/imran-farid/breeze.git
+* git clone project : git@github.com:imran-farid/breeze.git
 
 * cd breeze
 
