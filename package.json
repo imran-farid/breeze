@@ -1,0 +1,21 @@
+{
+  "name": "breeze",
+  "version": "1.0.0",
+  "description": "breeze automation",
+  "main": "index.js",
+  "scripts": {
+    "cy": "cypress",
+    "open": "npx cy open",
+    "test": "npx cypress run --reporter mochawesome"
+
+  },
+  "author": "imran farid",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^10.11.0"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
+    "mochawesome": "^7.1.3"
+  }
+}
