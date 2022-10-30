@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy": "cypress",
-    "open": "npx cy open",
+    "open": "npx cypress open",
     "test": "npx cypress run --reporter mochawesome"
 
   },
