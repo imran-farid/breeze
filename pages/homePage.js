@@ -7,10 +7,10 @@ const homePage = {
     oneWayButtonActive: 'nav-link tc-oneway-btn active',
     oneWayButtonInActive: 'nav-link tc-oneway-btn',
     fromField : '#origin > div > div > div.ng-input > input[type=text]',
-    fromListOption: 'div[id="origin-selected-station"] [aria-label="Options list"]',
-    toField : '#destination > div > div > div.ng-input > input[type=text]',
-    toListOption: 'div[id="destination-selected-station"] [aria-label="Options list"]',
-    calendra: 'bz-availability-date-picker .card.dates div:nth-child(1) .calendar-icon:nth-child(1)',
+    fromListOption: 'div[id="origin-selected-station"] [aria-label="Options list"] div[class="ng-option"]',
+    toField : '#ti-destination-select #destination input[type=text]',
+    toListOption: 'div[id="destination-selected-station"] [aria-label="Options list"] div[class="ng-option"]',
+    calendra: 'bz-availability-date-picker div[class*="tc-flight-date-picker"] div[class="date"]',
     calendraDate: 'div[data-full="REPLACE_XXXX"]',
     guestValue: 'div[aria-label="add guests button"] div div[class*="font-header"]',
     addGuestAvatar: 'div[aria-label="add guests button"] div[class*="avatar white-border"]',
@@ -36,25 +36,37 @@ const homePage = {
     },
     enterOriginAirport (originAirport){
         cy.get(this.fromField)
-          .type(originAirport,{ force: true })
-        
-        cy.wait(300)
-        
-        cy.get(this.fromListOption)
-          .type('{enter}')
+          .click()
+
+        cy.get(this.fromListOption, { timeout: 10000 }).should('be.visible');
+
+        cy.get(this.fromListOption).each($ele => {
+          const originValue = $ele.text()
+          if (String(originValue).toLowerCase().includes(originAirport.toLowerCase())) {
+            cy.log("origin name found and now clicking")
+            $ele.click();
+          }
+        })
 
     },
     enterDestinationAirport (destinationAirport){
-        cy.get(this.fromField)
-          .type(destinationAirport,{ force: true })
-        
-        cy.wait(15)
+        cy.get(this.toField)
+          .click()
+  
+        cy.get(this.toListOption, { timeout: 10000 }).should('be.visible');
 
-        cy.get(this.toListOption)
-          .type('{enter}')
+        cy.get(this.toListOption).each($ele => {
+          const destinationValue = $ele.text()
+          if (String(destinationValue).toLowerCase().includes(destinationAirport.toLowerCase())) {
+            cy.log("destination name found and now clicking")
+            $ele.click();
+          }
+        })
 
     },
     clickDepartFlightCalendar (){
+      cy.get(this.calendra, { timeout: 60000 }).should('be.visible');
+
       const fs = cy.get(this.calendra).first();
       fs.click();
 
