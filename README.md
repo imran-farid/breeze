@@ -12,6 +12,9 @@ breeze ui test automation assessment using Cypress
 
 * cd breeze
 
+#INSTALL ALL DEPENDENCIES,
+npm install
+
 #RUN TESTS
 
 npm run test
