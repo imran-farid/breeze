@@ -1,5 +1,5 @@
-# breeze ui testing
-breeze ui test automation assessment using Cypress
+# ui testing
+ui test automation assessment using Cypress
 
 ## Pre requesite
  ```
